@@ -9,7 +9,7 @@ To use the sorting algorithms provided in this project, you can follow these ste
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/sorting-algorithms-rust.git
+    git clone https://github.com/tomirisospanova/sorting-algorithms-rust.git
     ```
 
 2. Navigate to the project directory:
