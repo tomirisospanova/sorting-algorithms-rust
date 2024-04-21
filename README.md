@@ -1,4 +1,4 @@
-## Sorting Algorithms in Rust
+# Sorting Algorithms in Rust
 
 This project implements four sorting algorithms in Rust: Quick Sort, Selection Sort, Insertion Sort, and Merge Sort. Each algorithm is implemented as a separate function in the `sorting_library` crate.
 
