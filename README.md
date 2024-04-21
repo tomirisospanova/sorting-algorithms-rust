@@ -1,20 +1,20 @@
-# Sorting Algorithms in Rust
+## Sorting Algorithms in Rust
 
 This project implements four sorting algorithms in Rust: Quick Sort, Selection Sort, Insertion Sort, and Merge Sort. Each algorithm is implemented as a separate function in the `sorting_library` crate.
 
-# Quick Sort: 
+## Quick Sort: 
 Quick sort is a highly efficient sorting algorithm that uses a divide-and-conquer approach to sort elements. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then recursively sorted.
 
-# Selection Sort:
+## Selection Sort:
 Selection sort is a simple sorting algorithm that works by repeatedly selecting the minimum element from the unsorted portion of the array and moving it to the beginning. It gradually builds up a sorted portion of the array from left to right.
 
-# Insertion Sort:
+## Insertion Sort:
 Insertion sort is another simple sorting algorithm that builds the final sorted array one element at a time. It works by iterating through the array and repeatedly moving elements that are out of order into their correct position within the sorted portion of the array.
 
-# Merge Sort:
+## Merge Sort:
 Merge sort is a divide-and-conquer sorting algorithm that works by recursively dividing the array into smaller sub-arrays until each sub-array contains only one element. It then merges these sub-arrays back together in a sorted order.
 
-## Usage
+# Usage
 
 To use the sorting algorithms provided in this project, you can follow these steps:
 
