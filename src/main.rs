@@ -1,5 +1,3 @@
-// main.rs
-
 extern crate sorting_library; // Import the sorting library
 
 use sorting_library::{quick_sort, selection_sort, insertion_sort, merge_sort};
