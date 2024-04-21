@@ -32,19 +32,10 @@ To use the sorting algorithms provided in this project, you can follow these ste
     ```
 <img width="336" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/e5a5cc46-5b88-493d-a5f7-18d1e0584f3f">
 
-<img width="306" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/0a4e3e54-b35f-44f3-abf0-4f2a65bbe91d">
-
 ## Examples
 
 Here are some examples demonstrating the usage of the sorting algorithms provided:
 
-<img width="315" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/9f77b52b-3419-4111-9ce2-a423921f1e63">
-
-<img width="306" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/ce071e20-c24d-4e3b-9212-b1b153d5e930">
+<img width="317" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/6c44e8bf-d353-43e6-a38e-dab3020225d4">
 
 
-### Original Array
-
-```rust
-let numbers = vec![10, 7, 15, 6];
-println!("Original: {:?}", numbers);
