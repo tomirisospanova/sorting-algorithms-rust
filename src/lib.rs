@@ -1,85 +1,96 @@
-// Quicksort
-pub fn quick_sort<T: Ord>(arr: &mut [T]) {
-    if arr.len() <= 1 {
-        return;
-    }
+pub mod sorting {
+    use std::cmp::Ordering;
 
-    let pivot_index = partition(arr);
-
-    quick_sort(&mut arr[..pivot_index]);
-    quick_sort(&mut arr[pivot_index + 1..]);
-}
-
-fn partition<T: Ord>(arr: &mut [T]) -> usize {
-    let pivot_index = arr.len() / 2;
-    arr.swap(pivot_index, arr.len() - 1);
-
-    let mut i = 0;
-    for j in 0..arr.len() - 1 {
-        if arr[j] <= arr[arr.len() - 1] {
-            arr.swap(i, j);
-            i += 1;
+    // Quick Sort
+    pub fn quick_sort<T: PartialOrd>(arr: &mut [T]) {
+        if arr.len() <= 1 {
+            return;
+        }
+        if let Some(pivot_index) = partition(arr) {
+            quick_sort(&mut arr[0..pivot_index]);
+            quick_sort(&mut arr[pivot_index + 1..]);
         }
     }
-    arr.swap(i, arr.len() - 1);
-    i
-}
 
-// Selection Sort
-pub fn selection_sort<T: Ord>(arr: &mut [T]) {
-    for i in 0..arr.len() {
-        let mut min_index = i;
-        for j in i + 1..arr.len() {
-            if arr[j] < arr[min_index] {
-                min_index = j;
+    fn partition<T: PartialOrd>(arr: &mut [T]) -> Option<usize> {
+        let pivot = arr.len() - 1;
+        let mut i = 0;
+        for j in 0..pivot {
+            match arr[j].partial_cmp(&arr[pivot]) {
+                Some(Ordering::Less) | Some(Ordering::Equal) => {
+                    arr.swap(i, j);
+                    i += 1;
+                }
+                _ => {}
             }
         }
-        arr.swap(i, min_index);
-    }
-}
-
-// Insertion Sort
-pub fn insertion_sort<T: Ord>(arr: &mut [T]) {
-    for i in 1..arr.len() {
-        let mut j = i;
-        while j > 0 && arr[j - 1] > arr[j] {
-            arr.swap(j - 1, j);
-            j -= 1;
-        }
-    }
-}
-
-// Merge Sort
-pub fn merge_sort<T: Ord + Clone + Copy>(arr: &mut [T]) {
-    let len = arr.len();
-    if len <= 1 {
-        return;
+        arr.swap(i, pivot);
+        Some(i)
     }
 
-    let mid = len / 2;
-
-    merge_sort(&mut arr[..mid]);
-    merge_sort(&mut arr[mid..]);
-
-    let mut result = Vec::with_capacity(len);
-    let (mut i, mut j) = (0, mid);
-
-    while i < mid && j < len {
-        if arr[i] <= arr[j] {
-            result.push(arr[i].clone());
-            i += 1;
-        } else {
-            result.push(arr[j].clone());
-            j += 1;
+    // Insertion Sort
+    pub fn insertion_sort<T: PartialOrd>(arr: &mut [T]) {
+        for i in 1..arr.len() {
+            let mut j = i;
+            while j > 0 && arr[j].partial_cmp(&arr[j - 1]).map_or(false, |ord| ord == Ordering::Less) {
+                arr.swap(j - 1, j);
+                j -= 1;
+            }
         }
     }
 
-    if i < mid {
-        result.extend_from_slice(&arr[i..mid]);
-    } else {
-        result.extend_from_slice(&arr[j..]);
+    // Selection Sort
+    pub fn selection_sort<T: PartialOrd>(arr: &mut [T]) {
+        for i in 0..arr.len() {
+            let mut min_index = i;
+            for j in i + 1..arr.len() {
+                if arr[j].partial_cmp(&arr[min_index]).map_or(false, |ord| ord == Ordering::Less) {
+                    min_index = j;
+                }
+            }
+            arr.swap(i, min_index);
+        }
     }
 
-    arr.copy_from_slice(&result);
-}
+    // Merge Sort
+    pub fn merge_sort<T: PartialOrd + Clone>(arr: &mut [T]) {
+        let mid = arr.len() / 2;
+        if mid == 0 {
+            return;
+        }
+        let mut left = arr[..mid].to_vec();
+        let mut right = arr[mid..].to_vec();
+        merge_sort(&mut left);
+        merge_sort(&mut right);
+        merge(arr, &left, &right);
+    }
 
+    fn merge<T: PartialOrd + Clone>(arr: &mut [T], left: &[T], right: &[T]) {
+        let mut left_idx = 0;
+        let mut right_idx = 0;
+        let mut target_idx = 0;
+
+        while left_idx < left.len() && right_idx < right.len() {
+            if left[left_idx].partial_cmp(&right[right_idx]).map_or(false, |ord| ord != Ordering::Greater) {
+                arr[target_idx] = left[left_idx].clone();
+                left_idx += 1;
+            } else {
+                arr[target_idx] = right[right_idx].clone();
+                right_idx += 1;
+            }
+            target_idx += 1;
+        }
+
+        while left_idx < left.len() {
+            arr[target_idx] = left[left_idx].clone();
+            left_idx += 1;
+            target_idx += 1;
+        }
+
+        while right_idx < right.len() {
+            arr[target_idx] = right[right_idx].clone();
+            right_idx += 1;
+            target_idx += 1;
+        }
+    }
+}
