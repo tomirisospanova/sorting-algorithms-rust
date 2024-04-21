@@ -1,5 +1,3 @@
-// src/lib.rs
-
 // Quicksort
 pub fn quick_sort<T: Ord>(arr: &mut [T]) {
     if arr.len() <= 1 {
