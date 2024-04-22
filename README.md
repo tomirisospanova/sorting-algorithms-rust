@@ -35,7 +35,6 @@ To use the sorting algorithms provided in this project, you can follow these ste
 3. Open the `src/main.rs` file and modify it to sort your desired array of elements. You can also modify or extend the sorting algorithms in `src/lib.rs` if needed.
 <img width="119" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/f180fc97-6364-40db-8f68-6d49a253de71">
 
-<img width="270" alt="image" src="https://github.com/tomirisospanova/sorting-algorithms-rust/assets/124910398/10f728bf-7e48-4163-b745-f18424e62fe5">
 
 4. Run the project using Cargo:
 
